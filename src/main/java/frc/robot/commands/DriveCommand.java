@@ -15,6 +15,14 @@ public class DriveCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drivetrain m_drivetrain;
 
+  private TalonSRX rMain = new TalonSRX(Ports.rMain);
+  private TalonSRX rOne = new TalonSRX(Ports.rOne);
+  private TalonSRX rTwo = new TalonSRX(Ports.rSTwo);
+  private TalonSRX lMain = new TalonSRX(Ports.lMain);
+  private TalonSRX lOne = new TalonSRX(Ports.lOne);
+  private TalonSRX lTwo = new TalonSRX(Ports.lTwo);
+  
+  
   private Supplier<Double> leftX, leftY, rightX, rightY;
   /**
    * Creates a new ExampleCommand.
@@ -29,16 +37,23 @@ public class DriveCommand extends CommandBase {
     this.leftY = leftY;
     this.rightX = rightX;
     this.rightY = rightY;
+    talon.set(0); // the % output of the motor, between -1 and 1
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
 
+  public void rDrive(double power) {
+    rMain.set(ControlMod.PercentOutput, power);
+  }
+
+  public void lDrive(double power) {
+    lMain.set(ControlMod.PercentOutput, power);
+  }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
 
 
   
