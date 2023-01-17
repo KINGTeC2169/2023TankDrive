@@ -36,7 +36,12 @@ public class DriveCommand extends CommandBase {
     this.leftY = leftY;
     this.rightX = rightX;
     this.rightY = rightY;
-    talon.set(0); // the % output of the motor, between -1 and 1
+    rMain.set(0,0); // the % output of the motor, between -1 and 1
+    rOne.set(0,0);
+    rTwo.set(0,0);
+    lMain.set(0);
+    lOne.set(0);
+    lTwo.set 
   }
 
   // Called when the command is initially scheduled.
