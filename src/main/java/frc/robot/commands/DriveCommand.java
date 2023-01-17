@@ -15,13 +15,12 @@ public class DriveCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drivetrain m_drivetrain;
 
-  private TalonSRX rMain = new TalonSRX(Ports.rMain);
-  private TalonSRX rOne = new TalonSRX(Ports.rOne);
-  private TalonSRX rTwo = new TalonSRX(Ports.rSTwo);
-  private TalonSRX lMain = new TalonSRX(Ports.lMain);
-  private TalonSRX lOne = new TalonSRX(Ports.lOne);
-  private TalonSRX lTwo = new TalonSRX(Ports.lTwo);
-  
+  private TalonSRX rMain = new TalonSRX(1);
+  private TalonSRX rOne = new TalonSRX(2);
+  private TalonSRX rTwo = new TalonSRX(3);
+  private TalonSRX lMain = new TalonSRX(4);
+  private TalonSRX lOne = new TalonSRX(5);
+  private TalonSRX lTwo = new TalonSRX(6);
   
   private Supplier<Double> leftX, leftY, rightX, rightY;
   /**
