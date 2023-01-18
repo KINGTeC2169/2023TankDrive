@@ -59,14 +59,14 @@ public class DriveCommand extends CommandBase {
 
   public void rDrive(double power) {
     rMain.set(ControlMode.PercentOutput, power);
-    rOne.set(ControlMode.PercentOutput, power);
-    rTwo.set(ControlMode.PercentOutput, power);
+    //rOne.set(ControlMode.PercentOutput, power);
+    //rTwo.set(ControlMode.PercentOutput, power);
   }
 
   public void lDrive(double power) {
     lMain.set(ControlMode.PercentOutput, power);
-    lOne.set(ControlMode.PercentOutput, power);
-    lTwo.set(ControlMode.PercentOutput, power);
+    //lOne.set(ControlMode.PercentOutput, power);
+    //lTwo.set(ControlMode.PercentOutput, power);
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -84,15 +84,20 @@ public class DriveCommand extends CommandBase {
       lDrive(leftY.get());
       rDrive(leftY.get());
     }
-    if(control.aButtonPressed())
-    {
-      while(!control.aButtonReleased())
-      {
-        rMain.set(ControlMode.PercentOutput, 0.5);
-      }
-      
+    if(rightX.get() > 0.2){
+      rMain.set(ControlMode.PercentOutput, 0.6);
     }
+    if(rightX.get() < -0.2){
+      rDrive(0.6);
+    }
+    if(control.aButtonPressed() == true)
+    {
+        lDrive(0.5);
+        rDrive(0.5);
+    }
+    if(control.bButtonPressed()){
 
+    }
   
 
 
