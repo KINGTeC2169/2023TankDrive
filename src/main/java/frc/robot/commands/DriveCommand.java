@@ -36,12 +36,12 @@ public class DriveCommand extends CommandBase {
     this.leftY = leftY;
     this.rightX = rightX;
     this.rightY = rightY;
-    rMain.set(0,0); // the % output of the motor, between -1 and 1
-    rOne.set(0,0);
-    rTwo.set(0,0);
-    lMain.set(0);
-    lOne.set(0);
-    lTwo.set 
+    rMain.set(ControlMode.PercentOutput,0); // the % output of the motor, between -1 and 1
+    rOne.set(ControlMode.PercentOutput,0);
+    rTwo.set(ControlMode.PercentOutput,0);
+    lMain.set(ControlMode.PercentOutput,0);
+    lOne.set(ControlMode.PercentOutput,0);
+    lTwo.set(ControlMode.PercentOutput,0);
   }
 
   // Called when the command is initially scheduled.
@@ -49,11 +49,15 @@ public class DriveCommand extends CommandBase {
   public void initialize() {}
 
   public void rDrive(double power) {
-    rMain.set(ControlMod.PercentOutput, power);
+    rMain.set(ControlMode.PercentOutput, power);
+    rOne.set(ControlMode.PercentOutput, power);
+    rTwo.set(ControlMode.PercentOutput, power);
   }
 
   public void lDrive(double power) {
-    lMain.set(ControlMod.PercentOutput, power);
+    lMain.set(ControlMode.PercentOutput, power);
+    lOne.set(ControlMode.PercentOutput, power);
+    lTwo.set(ControlMode.PercentOutput, power);
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
