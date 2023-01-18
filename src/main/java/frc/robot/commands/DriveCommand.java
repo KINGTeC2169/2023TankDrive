@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+import java.lang.ModuleLayer.Controller;
 import java.math.*;
 
 
@@ -27,6 +28,7 @@ public class DriveCommand extends CommandBase {
   private TalonSRX lMain = new TalonSRX(4);
   private TalonSRX lOne = new TalonSRX(5);
   private TalonSRX lTwo = new TalonSRX(6);
+  private Control control = new Control();
 
   
   private Supplier<Double> leftX, leftY, rightX, rightY;
@@ -81,6 +83,11 @@ public class DriveCommand extends CommandBase {
     if(Math.abs(leftY.get()) < 0.5){
       lDrive(leftY.get());
       rDrive(leftY.get());
+    }
+    if(control.aButtonPressed() == true)
+    {
+      lDrive(1);
+      rDrive(1);
     }
 
   
