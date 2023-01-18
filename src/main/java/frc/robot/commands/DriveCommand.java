@@ -80,7 +80,7 @@ public class DriveCommand extends CommandBase {
       lDrive(leftX.get()/2);
       rDrive(leftX.get());
     }
-    if(Math.abs(leftY.get()) < 0.5){
+    if(Math.abs(leftY.get()) > 0.1){
       lDrive(leftY.get());
       rDrive(leftY.get());
     }
