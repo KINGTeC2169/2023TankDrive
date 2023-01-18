@@ -14,4 +14,29 @@ public class Control
     {
         return controller.getAButtonReleased();
     }
+    public boolean bButtonPressed()
+    {
+        return controller.getBButtonPressed();
+    }
+    public boolean bButtonReleased()
+    {
+        return controller.getBButtonReleased();
+    }
+    public boolean xButtonPressed()
+    {
+        return controller.getXButtonPressed();
+    }
+    public boolean xButtonReleased()
+    {
+        return controller.getXButtonReleased();
+    }
+    public boolean yButtonPressed()
+    {
+        return controller.getYButtonPressed();
+    }
+    public boolean yButtonReleased()
+    {
+        return controller.getYButtonReleased();
+    }
+
 }

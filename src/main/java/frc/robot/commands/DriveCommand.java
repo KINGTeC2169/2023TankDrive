@@ -84,12 +84,11 @@ public class DriveCommand extends CommandBase {
       lDrive(leftY.get());
       rDrive(leftY.get());
     }
-    if(control.aButtonPressed() == true)
+    if(control.aButtonPressed())
     {
       while(!control.aButtonReleased())
       {
-        lDrive(.5);
-        rDrive(.5);
+        rMain.set(ControlMode.PercentOutput, 0.5);
       }
       
     }
