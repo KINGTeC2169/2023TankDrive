@@ -13,6 +13,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+import java.math.*;
+
 
 /** An example command that uses an example subsystem. */
 public class DriveCommand extends CommandBase {
@@ -76,7 +78,7 @@ public class DriveCommand extends CommandBase {
       lDrive(leftX.get()/2);
       rDrive(leftX.get());
     }
-    if(leftY.get() != 0){
+    if(Math.abs(leftY.get()) < 0.5){
       lDrive(leftY.get());
       rDrive(leftY.get());
     }
