@@ -59,14 +59,14 @@ public class DriveCommand extends CommandBase {
 
   public void rDrive(double power) {
     rMain.set(ControlMode.PercentOutput, power);
-    //rOne.set(ControlMode.PercentOutput, power);
-    //rTwo.set(ControlMode.PercentOutput, power);
+    rOne.set(ControlMode.PercentOutput, power);
+    rTwo.set(ControlMode.PercentOutput, power);
   }
 
   public void lDrive(double power) {
-    lMain.set(ControlMode.PercentOutput, power);
-    //lOne.set(ControlMode.PercentOutput, power);
-    //lTwo.set(ControlMode.PercentOutput, power);
+    lMain.set(ControlMode.PercentOutput, -power);
+    lOne.set(ControlMode.PercentOutput, -power);
+    lTwo.set(ControlMode.PercentOutput, -power);
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -75,31 +75,43 @@ public class DriveCommand extends CommandBase {
       lDrive(leftX.get());
       rDrive(leftX.get()/2);
       //Nothing here for now
+      System.out.println("1");
     }
     if(leftX.get() < 0){
       lDrive(leftX.get()/2);
       rDrive(leftX.get());
+      System.out.println("2");
     }
+    if(leftY.get() > 0.1){
+      lDrive(leftX.get());
+      rDrive(leftX.get());
+      System.out.println("3");
+    }
+    /* 
     if(Math.abs(leftY.get()) > 0.1){
       lDrive(leftY.get());
       rDrive(leftY.get());
     }
-    if(rightX.get() > 0.2){
-      rMain.set(ControlMode.PercentOutput, 0.6);
+    */
+    
+    if(rightX.get() > 0){
+      lDrive(1);
+      System.out.println("4");
     }
-    if(rightX.get() < -0.2){
-      rDrive(0.6);
+    if(rightX.get() < 0){
+      rDrive(1);
+      System.out.println("5");
     }
     if(control.aButtonPressed() == true)
     {
         lDrive(0.5);
         rDrive(0.5);
+        System.out.println("7");
     }
     if(control.bButtonPressed()){
 
     }
   
-
 
 
   }
