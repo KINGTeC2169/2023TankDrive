@@ -9,4 +9,9 @@ public class Control
     {
         return controller.getAButtonPressed();
     }
+
+    public boolean aButtonReleased()
+    {
+        return controller.getAButtonReleased();
+    }
 }

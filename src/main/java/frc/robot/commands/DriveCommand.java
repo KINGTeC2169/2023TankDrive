@@ -86,8 +86,12 @@ public class DriveCommand extends CommandBase {
     }
     if(control.aButtonPressed() == true)
     {
-      lDrive(1);
-      rDrive(1);
+      while(!control.aButtonReleased())
+      {
+        lDrive(.5);
+        rDrive(.5);
+      }
+      
     }
 
   
