@@ -67,11 +67,18 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(leftX.get() != 0){
+    if(leftX.get() > 0){
+      lDrive(leftX.get());
+      rDrive(leftX.get()/2);
       //Nothing here for now
+    }
+    if(leftX.get() < 0){
+      lDrive(leftX.get()/2);
+      rDrive(leftX.get());
     }
     if(leftY.get() != 0){
       lDrive(leftY.get());
+      rDrive(leftY.get());
     }
 
   
