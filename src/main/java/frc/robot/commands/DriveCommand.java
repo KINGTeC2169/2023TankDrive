@@ -71,30 +71,8 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(leftX.get() > 0){
-      
-    }
-    if(leftX.get() < 0){
-      
-    }
-    if(leftY.get() > 0.1){
-      
-    }
-    
-    if(rightX.get() > 0){
-
-    }
-    if(rightX.get() < 0){
-
-    }
-    if(control.aButtonPressed() == true)
-    {
-
-    }
-    if(control.bButtonPressed()){
-
-    }
-  
+    lDrive(leftY.get());
+    rDrive(rightY.get());
 
 
   }
