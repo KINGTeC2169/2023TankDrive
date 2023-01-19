@@ -37,14 +37,12 @@ public class DriveCommand extends CommandBase {
    *
    * @param drivetrain The subsystem used by this command.
    */
-  public DriveCommand(Drivetrain drivetrain, Supplier<Double> leftX, Supplier<Double> leftY, Supplier<Double> rightX, Supplier<Double> rightY) {
+  public DriveCommand(Drivetrain drivetrain, Supplier<Double> rightZ, Supplier<Double> leftY){
     m_drivetrain = drivetrain;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drivetrain);
-    this.leftX = leftX;
     this.leftY = leftY;
-    this.rightX = rightX;
-    this.rightY = rightY;
+    this.rightZ = rightZ;
     rMain.set(ControlMode.PercentOutput,0); // the % output of the motor, between -1 and 1
     rOne.set(ControlMode.PercentOutput,0);
     rTwo.set(ControlMode.PercentOutput,0);
@@ -71,9 +69,15 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    lDrive(leftY.get());
-    rDrive(rightY.get());
+    lDrive(leftY.get()); //One Joystick moves forward and backward
+    rDrive(leftY.get());
 
+    if(rightZ.get() > 0){ //Turns Right
+      lDrive(rightZ.get());
+    }
+    else if(rightZ.get() < 0){ //Turns Left
+      rDrive(rightZ.get());
+    }
 
   }
 
