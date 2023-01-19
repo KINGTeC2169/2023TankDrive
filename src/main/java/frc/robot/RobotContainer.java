@@ -4,10 +4,11 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -24,15 +25,11 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
+  private final Joystick m_driverController =
+      new Joystick(OperatorConstants.kDriverControllerPort);
 
-  private final DriveCommand m_driveCommand = new DriveCommand(m_drivetrain, 
-  () -> m_driverController.getLeftX(), 
-  () -> m_driverController.getLeftY(), 
-  () -> m_driverController.getRightX(), 
-  () -> m_driverController.getRightY());
-
+  private final DriveCommand m_driveCommand = new DriveCommand();
+  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     m_drivetrain.setDefaultCommand(m_driveCommand);
