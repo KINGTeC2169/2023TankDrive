@@ -31,7 +31,7 @@ public class DriveCommand extends CommandBase {
   private Control control = new Control();
 
   
-  private Supplier<Double> leftX, leftY, rightX, rightY;
+  private Supplier<Double> leftY, rightZ;
   /**
    * Creates a new ExampleCommand.
    *
