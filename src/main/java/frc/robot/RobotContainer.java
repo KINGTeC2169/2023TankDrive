@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.Constants;
+import frc.robot.commands.ActuatorMap;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.Drivetrain;
@@ -25,10 +26,10 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final Joystick m_driverController =
-      new Joystick(OperatorConstants.kDriverControllerPort);
+  private final Joystick leftJoy = new Joystick(ActuatorMap.lJoyStick);
+  private final Joystick rightJoy = new Joystick(ActuatorMap.rJoyStick);
 
-  private final DriveCommand m_driveCommand = new DriveCommand();
+  private final DriveCommand m_driveCommand = new DriveCommand(m_drivetrain, null, null);
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
