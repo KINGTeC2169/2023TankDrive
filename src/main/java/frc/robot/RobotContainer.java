@@ -29,7 +29,7 @@ public class RobotContainer {
   private final Joystick leftJoy = new Joystick(ActuatorMap.lJoyStick);
   private final Joystick rightJoy = new Joystick(ActuatorMap.rJoyStick);
 
-  private final DriveCommand m_driveCommand = new DriveCommand(m_drivetrain, null, null);
+  public final DriveCommand m_driveCommand = new DriveCommand(m_drivetrain);
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

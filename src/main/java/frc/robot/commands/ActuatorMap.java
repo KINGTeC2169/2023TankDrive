@@ -2,9 +2,9 @@ package frc.robot.commands;
 
 
 public class ActuatorMap {
-    public static final int lJoyStick = 1;
-    public static final int rJoyStick = 2;
-    public static final int controller = 0;
+    public static final int lJoyStick = 0;
+    public static final int rJoyStick = 1;
+    public static final int controller = 2;
 
     //CAN Devices (PCM should default to 0, so hopefully we don't have to change it)
     public static final int lMaster = 4;
