@@ -66,13 +66,12 @@ public class DriveCommand extends CommandBase {
     lOne.set(ControlMode.PercentOutput, -power);
     lTwo.set(ControlMode.PercentOutput, -power);
   }
-  // Called every time the scheduler runs while the command is scheduled.
+
   private double leftPow = 0;
   private double rightPow = 0;
-  @Override
-  public void execute() {
-    
-    
+  private double max = 0;
+
+  public void xTurn(){
     leftPow = -Control.getLeftStickY(); //One Joystick moves forward and backward
     rightPow = -Control.getLeftStickY();
 
@@ -82,16 +81,34 @@ public class DriveCommand extends CommandBase {
     else if(Control.getRightStickX() < 0){ //Turns Left
       rightPow *= 1+Control.getRightStickX();
     }
-    else if(Control.getRightStickTwist() < 0 && Control.getLeftStickY() == 0){
-      leftPow = Control.getRightStickTwist();
-      rightPow = -Control.getRightStickTwist();
-    }
-    else if(Control.getRightStickTwist() > 0 && Control.getLeftStickY() == 0){
+    
+    lDrive(leftPow);
+    rDrive(rightPow);
+    
+  }
+  public void twistTurn(){
+    if(Control.getRightStickTwist() > 0){
       leftPow = -Control.getRightStickTwist();
       rightPow = Control.getRightStickTwist();
     }
+    else{
+      leftPow = Control.getRightStickTwist();
+      rightPow = -Control.getRightStickTwist();
+    }
     lDrive(leftPow);
     rDrive(rightPow);
+  }
+  // Called every time the scheduler runs while the command is scheduled.
+  
+  @Override
+  public void execute() {
+    if(Math.abs(Control.getRightStickTwist()) < 0.05){
+      xTurn();
+    }
+    else{
+      twistTurn();
+    }
+    
     
 
   }
