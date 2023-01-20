@@ -67,17 +67,20 @@ public class DriveCommand extends CommandBase {
     lTwo.set(ControlMode.PercentOutput, -power);
   }
   // Called every time the scheduler runs while the command is scheduled.
+  
   @Override
   public void execute() {
-    lDrive(leftY.get()); //One Joystick moves forward and backward
-    rDrive(leftY.get());
-
     if(rightZ.get() > 0){ //Turns Right
       lDrive(rightZ.get());
     }
     else if(rightZ.get() < 0){ //Turns Left
-      rDrive(rightZ.get());
+      rDrive(-rightZ.get());
     }
+    
+    lDrive(leftY.get()); //One Joystick moves forward and backward
+    rDrive(leftY.get());
+
+    
 
   }
 
