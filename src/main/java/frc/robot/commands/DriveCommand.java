@@ -74,13 +74,13 @@ public class DriveCommand extends CommandBase {
     
     
     leftPow = -Control.getLeftStickY(); //One Joystick moves forward and backward
-    rightPow = Control.getLeftStickY();
+    rightPow = -Control.getLeftStickY();
 
     if(Control.getRightStickTwist() > 0){ //Turns Right
-      leftPow *= Control.getRightStickTwist();
+      leftPow *= 1-Control.getRightStickTwist();
     }
     else if(Control.getRightStickTwist() < 0){ //Turns Left
-      rightPow *= -Control.getRightStickTwist();
+      rightPow *= 1+Control.getRightStickTwist();
     }
     lDrive(leftPow);
     rDrive(rightPow);
