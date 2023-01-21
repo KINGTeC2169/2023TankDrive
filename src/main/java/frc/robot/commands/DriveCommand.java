@@ -4,12 +4,14 @@
 
 package frc.robot.commands;
 
+import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Drivetrain;
 
 import java.util.function.Supplier;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -29,7 +31,6 @@ public class DriveCommand extends CommandBase {
   private TalonSRX lOne = new TalonSRX(5);
   private TalonSRX lTwo = new TalonSRX(6);
   private Control control = new Control();
-
   
   private Supplier<Double> leftY, rightZ;
   /**
@@ -102,12 +103,16 @@ public class DriveCommand extends CommandBase {
   
   @Override
   public void execute() {
+    if(Control.getRightStickBottom()){
+      System.out.println(ColorSensor.getColor());
+    }
     if(Math.abs(Control.getRightStickTwist()) < 0.05){
       xTurn();
     }
     else{
       twistTurn();
     }
+    
     
     
 
