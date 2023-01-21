@@ -120,6 +120,7 @@ public class DriveCommand extends CommandBase {
     if(blue>128){
       colorNum += 1;
     }
+    System.out.print(hexVal);
     return colors[colorNum];
   }
   // Called every time the scheduler runs while the command is scheduled.
