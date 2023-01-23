@@ -58,13 +58,13 @@ public class DriveCommand extends CommandBase {
   public void initialize() {}
 
   public void rDrive(double power) {
-    rMain.set(ControlMode.PercentOutput, power);
+    rMain.set(ControlMode.PercentOutput, -power);
     rOne.set(ControlMode.PercentOutput, power);
     rTwo.set(ControlMode.PercentOutput, power);
   }
 
   public void lDrive(double power) {
-    lMain.set(ControlMode.PercentOutput, -power);
+    lMain.set(ControlMode.PercentOutput, power);
     lOne.set(ControlMode.PercentOutput, -power);
     lTwo.set(ControlMode.PercentOutput, -power);
   }
@@ -103,6 +103,7 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    
     if(Control.getRightStickBottom()){
       System.out.println(ColorNames.hexToName(ColorSensor.getColor().toHexString()));
     }
@@ -112,6 +113,8 @@ public class DriveCommand extends CommandBase {
     else{
       twistTurn();
     }
+
+    
     
     
     
