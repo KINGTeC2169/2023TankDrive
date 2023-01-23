@@ -100,35 +100,11 @@ public class DriveCommand extends CommandBase {
     lDrive(leftPow);
     rDrive(rightPow);
   }
-  private int red;
-  private int green;
-  private int blue;
-  private String[] colors = {"black","blue","green","aqua","red","purple","yellow","white"} ;
-  private int colorNum = 0;
-  private final String hex = "0123456789abcdef";
-  public String hexToColor(String hexVal){
-    red = hex.indexOf(hexVal.substring(1,2))*16 + hex.indexOf(hexVal.substring(2,3));
-    green = hex.indexOf(hexVal.substring(3,4))*16 + hex.indexOf(hexVal.substring(4,5));
-    blue = hex.indexOf(hexVal.substring(5,6))*16 + hex.indexOf(hexVal.substring(6,7));
-    colorNum = 0;
-    if(red>128){
-      colorNum += 4;
-    }
-    if(green>128){
-      colorNum += 2;
-    }
-    if(blue>128){
-      colorNum += 1;
-    }
-    System.out.print(hexVal);
-    return colors[colorNum];
-  }
   // Called every time the scheduler runs while the command is scheduled.
-  int[] color;
   @Override
   public void execute() {
     if(Control.getRightStickBottom()){
-      System.out.println(hexToColor(ColorSensor.getColor().toHexString()));
+      System.out.println(ColorNames.hexToName(ColorSensor.getColor().toHexString()));
     }
     if(Math.abs(Control.getRightStickTwist()) < 0.05){
       xTurn();
