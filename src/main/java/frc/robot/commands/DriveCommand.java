@@ -89,14 +89,8 @@ public class DriveCommand extends CommandBase {
     
   }
   public void twistTurn(){
-    if(Control.getRightStickTwist() > 0){
-      leftPow = -Control.getRightStickTwist();
-      rightPow = Control.getRightStickTwist();
-    }
-    else{
-      leftPow = Control.getRightStickTwist();
-      rightPow = -Control.getRightStickTwist();
-    }
+    leftPow = -Control.getRightStickTwist();
+    rightPow = Control.getRightStickTwist();
     lDrive(leftPow);
     rDrive(rightPow);
   }
