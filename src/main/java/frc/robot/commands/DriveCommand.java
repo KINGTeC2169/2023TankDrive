@@ -119,7 +119,12 @@ public class DriveCommand extends CommandBase {
         }
       }
       else{
-        twistTurn(0.125);
+        if(LimeLight.getX() > 0){
+          twistTurn(0.125);
+        }
+        else{
+          twistTurn(-0.125);
+        }
       }
     }
     
