@@ -122,13 +122,6 @@ public class DriveCommand extends CommandBase {
         twistTurn(0.125);
       }
     }
-<<<<<<< HEAD
-=======
-
-    
-    
-    
->>>>>>> ff26f2f555246e3d551f270765cd046ab009fd62
     
 
   }
