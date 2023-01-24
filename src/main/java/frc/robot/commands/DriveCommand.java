@@ -98,6 +98,7 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    
     if(Control.getRightStickBottom()){
       System.out.println(ColorNames.hexToName(ColorSensor.getColor().toHexString()));
     }
@@ -121,6 +122,13 @@ public class DriveCommand extends CommandBase {
         twistTurn(0.125);
       }
     }
+<<<<<<< HEAD
+=======
+
+    
+    
+    
+>>>>>>> ff26f2f555246e3d551f270765cd046ab009fd62
     
 
   }
