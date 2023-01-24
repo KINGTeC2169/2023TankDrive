@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.LimeLight;
 
 import java.util.function.Supplier;
 
@@ -58,13 +59,13 @@ public class DriveCommand extends CommandBase {
   public void initialize() {}
 
   public void rDrive(double power) {
-    rMain.set(ControlMode.PercentOutput, power);
+    rMain.set(ControlMode.PercentOutput, -power);
     rOne.set(ControlMode.PercentOutput, power);
     rTwo.set(ControlMode.PercentOutput, power);
   }
 
   public void lDrive(double power) {
-    lMain.set(ControlMode.PercentOutput, -power);
+    lMain.set(ControlMode.PercentOutput, power);
     lOne.set(ControlMode.PercentOutput, -power);
     lTwo.set(ControlMode.PercentOutput, -power);
   }
@@ -88,9 +89,9 @@ public class DriveCommand extends CommandBase {
     rDrive(rightPow);
     
   }
-  public void twistTurn(){
-    leftPow = -Control.getRightStickTwist();
-    rightPow = Control.getRightStickTwist();
+  public void twistTurn(double twist){
+    leftPow = -twist;
+    rightPow = twist;
     lDrive(leftPow);
     rDrive(rightPow);
   }
@@ -104,10 +105,22 @@ public class DriveCommand extends CommandBase {
       xTurn();
     }
     else{
-      twistTurn();
+      twistTurn(Control.getRightStickTwist());
     }
-    
-    
+    if(Control.getLeftStickBottom()){
+      System.out.println(LimeLight.getBoth());
+    }
+    if(Control.getRightStickTop()){
+      if(Math.abs(LimeLight.getX()) < 3 && LimeLight.getX() != 0){
+        if(LimeLight.getY() < 0){
+          lDrive(-0.5);
+          rDrive(-0.5);
+        }
+      }
+      else{
+        twistTurn(0.125);
+      }
+    }
     
 
   }
