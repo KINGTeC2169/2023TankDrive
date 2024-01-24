@@ -5,17 +5,15 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Drivetrain;
-
 import java.util.function.Supplier;
-
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class DriveCommand extends Command {
+public class DriveCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drivetrain m_drivetrain;
   
-  private Supplier<Double> leftPow, rightPow; 
+  private Supplier<Double> leftMove, rightMove; 
 
   /**
    * Creates a new ExampleCommand.
@@ -24,8 +22,8 @@ public class DriveCommand extends Command {
    */
   public DriveCommand(Drivetrain drivetrain, Supplier<Double> leftPow, Supplier<Double> rightPow){
     m_drivetrain = drivetrain;
-    this.leftPow = leftPow;
-    this.rightPow = rightPow;
+    this.leftMove = leftPow;
+    this.rightMove = rightPow;
 
     addRequirements(drivetrain);
   }
@@ -35,26 +33,10 @@ public class DriveCommand extends Command {
   public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
+  // Tell the robot what to do when it detects the left joystick or right joystick is moved
+  // This is where you would call methods from your drivetrain subsystem
   @Override
-  public void execute() {
-
-    double leftSpeed = leftPow.get();
-    double rightSpeed = rightPow.get();
-
-    if (Math.abs(leftSpeed) > 0.07){
-      m_drivetrain.lDrive(leftSpeed);
-    }
-    else{
-      m_drivetrain.stopLeft();
-    }
-    if (Math.abs(rightSpeed) > 0.07){
-      m_drivetrain.rDrive(rightSpeed);
-    }
-    else{
-      m_drivetrain.stopRight();
-    }
-    System.out.println(leftSpeed + "\t" + rightSpeed);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override

@@ -12,65 +12,25 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Drivetrain extends SubsystemBase {
 
   //make your motor variables here
-  private TalonSRX rMain;
-  private TalonSRX rOne;
-  private TalonSRX rTwo;
-  private TalonSRX lMain;
-  private TalonSRX lOne;
-  private TalonSRX lTwo;
+  //There should be 6, 3 for each side.
 
   public Drivetrain() {
-
     //assign motor values here
-    rMain = new TalonSRX(1);
-    rOne = new TalonSRX(2);
-    rTwo = new TalonSRX(3);
-    lMain = new TalonSRX(4);
-    lOne = new TalonSRX(5);
-    lTwo = new TalonSRX(6);
 
   }
 
-  public void rDrive(double power) {
-    rMain.set(ControlMode.PercentOutput, -power);
-    rOne.set(ControlMode.PercentOutput, power);
-    rTwo.set(ControlMode.PercentOutput, power);
-  }
+  //This class should set the power level of the right side motors to the power instance variable
+  public void rDrive(double power) {}
 
-  public void lDrive(double power) {
-    lMain.set(ControlMode.PercentOutput, power);
-    lOne.set(ControlMode.PercentOutput, -power);
-    lTwo.set(ControlMode.PercentOutput, -power);
-  }
+  //This class should set the power level of the left side motors to the power instance variable
+  public void lDrive(double power) {}
 
-  public void stop(){
-    lMain.set(ControlMode.PercentOutput, 0);
-    lOne.set(ControlMode.PercentOutput, 0);
-    lTwo.set(ControlMode.PercentOutput, 0);
-    rMain.set(ControlMode.PercentOutput, 0);
-    rOne.set(ControlMode.PercentOutput, 0);
-    rTwo.set(ControlMode.PercentOutput, 0);
-  }
+  //This class should set the power of all the motors to 0
+  public void stop(){}
 
-  public void stopLeft(){
-    lMain.set(ControlMode.PercentOutput, 0);
-    lOne.set(ControlMode.PercentOutput, 0);
-    lTwo.set(ControlMode.PercentOutput, 0);
-  }
+  //This class should set all the left side motors to 0
+  public void stopLeft(){}
 
-  public void stopRight(){
-    rMain.set(ControlMode.PercentOutput, 0);
-    rOne.set(ControlMode.PercentOutput, 0);
-    rTwo.set(ControlMode.PercentOutput, 0);
-  }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
-
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
-  }
+  //This class should set all the right side motors to 0
+  public void stopRight(){}
 }
