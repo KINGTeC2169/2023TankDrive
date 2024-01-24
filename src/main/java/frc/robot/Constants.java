@@ -1,6 +1,11 @@
 package frc.robot;
 
 public final class Constants {
+
+    public static final class Ports{
+        public static final int controller = 0;
+    }
+
     public static final double turnSensitivity = 1.0;
 
     //Sensor Units per revolution (Counts per revolution)

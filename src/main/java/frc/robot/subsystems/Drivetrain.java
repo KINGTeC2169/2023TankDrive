@@ -4,64 +4,64 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase {
 
-
   //make your motor variables here
-
+  private TalonSRX rMain;
+  private TalonSRX rOne;
+  private TalonSRX rTwo;
+  private TalonSRX lMain;
+  private TalonSRX lOne;
+  private TalonSRX lTwo;
 
   public Drivetrain() {
 
     //assign motor values here
+    rMain = new TalonSRX(1);
+    rOne = new TalonSRX(2);
+    rTwo = new TalonSRX(3);
+    lMain = new TalonSRX(4);
+    lOne = new TalonSRX(5);
+    lTwo = new TalonSRX(6);
 
   }
 
-
-
-
-
-  public void exampleMethod() {
-    //control motors here
+  public void rDrive(double power) {
+    rMain.set(ControlMode.PercentOutput, -power);
+    rOne.set(ControlMode.PercentOutput, power);
+    rTwo.set(ControlMode.PercentOutput, power);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
-  public CommandBase exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
+  public void lDrive(double power) {
+    lMain.set(ControlMode.PercentOutput, power);
+    lOne.set(ControlMode.PercentOutput, -power);
+    lTwo.set(ControlMode.PercentOutput, -power);
   }
 
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
-  public boolean exampleCondition() {
-    // Query some boolean state, such as a digital sensor.
-    return false;
+  public void stop(){
+    lMain.set(ControlMode.PercentOutput, 0);
+    lOne.set(ControlMode.PercentOutput, 0);
+    lTwo.set(ControlMode.PercentOutput, 0);
+    rMain.set(ControlMode.PercentOutput, 0);
+    rOne.set(ControlMode.PercentOutput, 0);
+    rTwo.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void stopLeft(){
+    lMain.set(ControlMode.PercentOutput, 0);
+    lOne.set(ControlMode.PercentOutput, 0);
+    lTwo.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void stopRight(){
+    rMain.set(ControlMode.PercentOutput, 0);
+    rOne.set(ControlMode.PercentOutput, 0);
+    rTwo.set(ControlMode.PercentOutput, 0);
   }
 
   @Override
