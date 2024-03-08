@@ -26,16 +26,17 @@ public class RobotContainer {
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final XboxController controller = new XboxController(Constants.Ports.controller);
   
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  /* The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    m_drivetrain.setDefaultCommand(new DriveCommand(m_drivetrain, 
-                                    () -> controller.getLeftY(), 
-                                    () -> controller.getRightY())
-                                    );
-    // Configure the trigger bindings
-    configureBindings();
+   m_drivetrain.setDefaultCommand(new DriveCommand(m_drivetrain, 
+                                   () -> controller.getLeftY(), 
+                                   () -> controller.getRightY(),
+                                   () -> controller.getRightBumper())
+                                   );
+    //Configure the trigger bindings
+   configureBindings();
   }
-
+  
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
