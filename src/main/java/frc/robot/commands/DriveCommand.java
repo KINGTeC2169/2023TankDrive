@@ -6,6 +6,8 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.Drivetrain;
 import java.util.function.Supplier;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
@@ -14,18 +16,20 @@ public class DriveCommand extends Command {
   private final Drivetrain m_drivetrain;
   
   private Supplier<Double> leftMove, rightMove; 
-  private Supplier<Boolean> slowo;
+  private Supplier<Boolean> slowo, actualSlow;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param drivetrain The subsystem used by this command.
    */
-  public DriveCommand(Drivetrain drivetrain, Supplier<Double> leftPow, Supplier<Double> rightPow, Supplier<Boolean> slowo){
+  public DriveCommand(Drivetrain drivetrain, Supplier<Double> leftPow, Supplier<Double> rightPow, Supplier<Boolean> slowo, Supplier<Boolean> actualSlow){
     m_drivetrain = drivetrain;
     this.leftMove = leftPow;
     this.rightMove = rightPow;
     this.slowo = slowo;
+    this.actualSlow = actualSlow;
+
 
     addRequirements(drivetrain);
   }
@@ -49,7 +53,14 @@ public class DriveCommand extends Command {
     }else{
       m_drivetrain.stopRight();
     }
-    
+    if(actualSlow.get()) {
+      m_drivetrain.setPowahh(-0.1);
+      Timer.delay(0.2);
+    }
+    if(slowo.get()) {
+      m_drivetrain.setPowahh(0.1);
+      Timer.delay(0.2);
+    }
   }
 
   // Called once the command ends or is interrupted.

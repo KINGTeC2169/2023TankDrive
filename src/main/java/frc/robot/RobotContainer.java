@@ -31,8 +31,8 @@ public class RobotContainer {
    m_drivetrain.setDefaultCommand(new DriveCommand(m_drivetrain, 
                                    () -> controller.getLeftY(), 
                                    () -> controller.getRightY(),
-                                   () -> controller.getRightBumper())
-                                   );
+                                   () -> controller.getRightBumper(),
+                                   () -> controller.getLeftBumper()));
     //Configure the trigger bindings
    configureBindings();
   }
